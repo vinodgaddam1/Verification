@@ -131,6 +131,7 @@ Directed testing is a verification approach where you study the hardware specifi
 Each test focuses on a particular set of related features of the DUT.
 <img width="797" height="327" alt="Screenshot 2026-09-06 222210" src="https://github.com/user-attachments/assets/eeba16a3-bad4-4890-8e12-85e7039de0eb" />
 
+<img width="860" height="411" alt="Screenshot 2026-09-06 222611" src="https://github.com/user-attachments/assets/706da15a-099c-4d50-9a6a-16544a4178ad" />
 
 
 
@@ -179,12 +180,7 @@ Directed testing is predictable and targeted, but writing enough directed tests 
 1.4.1 Constrained-Random Stimulus:
 Although you want the simulator to generate the stimulus, you don’t want totally random values. You use the SystemVerilog language to describe the format of the stimulus (“address is 32-bits; opcode is ADD, SUB or STORE; length < 32 bytes”), and the simulator picks values that meet the constraints.
 
-
-
-
-
-
- 
+<img width="807" height="738" alt="Screenshot 2026-09-06 222501" src="https://github.com/user-attachments/assets/a9d8ac58-2f8b-4af1-b3fa-9b6c3bb58588" />
 
 -----------------------------------------------------------------------------------------------------------------
  
@@ -527,7 +523,7 @@ module alu_tb;
 
 endmodule
 
-
+-----------------------------------------------------------------------------------------------------------------
 Chapter 2 — SystemVerilog Data Types
 
 
