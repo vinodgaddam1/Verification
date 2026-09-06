@@ -1,3 +1,6 @@
+<img width="756" height="520" alt="Screenshot 2026-09-06 215930" src="https://github.com/user-attachments/assets/68ebbfc8-caa2-40b2-97d7-e0df2371efba" />
+<img width="601" height="393" alt="Screenshot 2026-09-06 215702" src="https://github.com/user-attachments/assets/a8cc7e98-f5f0-4352-bf4d-2166a02c2b60" />
+<img width="920" height="1280" alt="WhatsApp Image 2026-08-06 at 6 47 33 PM" src="https://github.com/user-attachments/assets/68856e3b-3e2f-4514-8088-2e1a5dd6f034" />
 # 🔬 Chapter 1 — Verification Guidelines
 
 ## 📌 1.1.2 The Verification Plan
