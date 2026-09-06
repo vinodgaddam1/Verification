@@ -524,7 +524,7 @@ module alu_tb;
 endmodule
 
 -----------------------------------------------------------------------------------------------------------------
-Chapter 2 — SystemVerilog Data Types
+# 🔬 Chapter 2 — Data Types
 
 
 
