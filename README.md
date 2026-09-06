@@ -218,15 +218,13 @@ The useful strategy is:
 
 The testbench wraps around the Design Under Test (DUT), similar to how a hardware tester connects to a physical chip.
            🧪 TESTBENCH
-        ┌─────────────────────┐
-        │                     │
-Input ──┤  Stimulus           │
-        │       ↓             │
-        │      DUT            │
-        │       ↓             │
- Output ┤  Response Capture   │
-        │                     │
-        └─────────────────────┘
+       
+  🎯 Basic Testbench Function
+
+The testbench performs two main activities:
+
+📥 Provide Stimulus → Sends inputs to the DUT
+📤 Capture Responses → Observes and checks DUT outputs    
 
 
 -----------------------------------------------------------------------------------------------------------------
@@ -248,8 +246,204 @@ A well-structured testbench can contain:
 
 🎯 Tests → 📦 Transactions → 🔄 Transactors/BFMs → 🔌 DUT Interface → 🔍 Monitors → 📊 Checkers
 
+-----------------------------------------------------------------------------------------------------------------
+
+ 💡 A Flat Testbench :
+When you fi rst learned Verilog and started writing tests, they probably looked like the low-level code inSample  1.1  , which does a simplifi ed APB (AMBA Peripheral Bus) Write. (VHDL users may have written similar code). 
+
+sample 1.1 Driving the APB pins
+
+🔹 1. Testbench Ports
+module test(PAddr, PWrite, PSel, PWData, PEnable, Rst, clk);
+
+The testbench receives the APB signals as ports. The port declarations are omitted in the example.
+
+🔹 2. Drive Reset 🔄
+initial begin
+    Rst <= 0;
+    #100 Rst <= 1'b1;
+
+Initially, reset is asserted:
+
+Rst = 0
+
+After 100 time units, reset is released:
+
+Rst = 1
+
+📌 This places the DUT into a known initial state before the transaction begins.
+
+🔹 3. Drive the Control Bus 🎯
+@(posedge clk);
+PAddr  <= 16'h50;
+PWData <= 32'h50;
+PWrite <= 1'b1;
+PSel   <= 1'b1;
+
+At the next positive clock edge:
+
+PAddr = 16'h50 → Address 0x50
+PWData = 32'h50 → Data 0x50
+PWrite = 1 → Write operation
+PSel = 1 → Select the APB slave
+
+So the testbench is essentially requesting:
+
+WRITE 0x50 → Address 0x50
+             Data    0x50
+🔹 4. Toggle PEnable ⏱️
+@(posedge clk)
+    PEnable <= 1'b1;
+
+@(posedge clk)
+    PEnable <= 1'b0;
+
+The testbench asserts PEnable for one clock cycle.
+
+Simplified APB sequence:
+
+Clock       ↑       ↑       ↑
+
+PSEL        ────────1────────
+PENABLE     ────────0──1────0
+PWRITE      ────────1────────
+PADDR       ────────50───────
+PWDATA      ────────50───────
+
+This demonstrates the basic APB setup phase followed by the access phase.
+
+🔍 5. Check the Result
+if (top.mem.memory[16'h50] == 32'h50)
+    $display("Success");
+else
+    $display("Error, wrong value in memory");
+
+The testbench directly examines the DUT's memory and checks:
+
+Expected = 32'h50
+Actual   = memory[16'h50]
+
+If they match:
+
+Success
+
+Otherwise:
+
+Error, wrong value in memory
+
+Finally:
+
+$finish;
+
+ends the simulation.
+
+⚠️ What This Example Is Teaching
+
+This is a basic/direct testbench, not a modern UVM-style environment.
+
+The testbench is doing everything manually:
+
+🧪 Test
+  ↓
+📌 Drive APB pins
+  ↓
+🔌 DUT
+  ↓
+🔍 Directly inspect memory
+  ↓
+✅ PASS / ❌ FAIL
+💡 Problem with this approach
+
+Imagine you need 1,000 APB tests.
+
+Writing code like:
+
+PAddr  <= ...;
+PWData <= ...;
+PWrite <= ...;
+PSel   <= ...;
+PEnable <= ...;
+
+for every test becomes repetitive and difficult to maintain.
+
+That's exactly why verification methodologies introduce transactions, transactors/BFMs, monitors, scoreboards, and reusable components.
+
+📌 Key Takeaway
+
+This example demonstrates the lowest-level approach: directly driving DUT interface pins and directly checking the result.
+
+The next step in the methodology is to move from:
+
+Pin-level testing → Transaction-level testing → Layered testbench → UVM.
+
+-----------------------------------------------------------------------------------------------------------------
 
 
+🧪 Sample 1.2 — Task to Drive APB Pins
+
+A task is used to make APB write operations reusable.
+
+task write(reg [15:0] addr, reg [31:0] data);
+    @(posedge clk);
+    PAddr  <= addr;
+    PWData <= data;
+    PWrite <= 1'b1;
+    PSel   <= 1'b1;
+
+    @(posedge clk);
+    PEnable <= 1'b1;
+
+    @(posedge clk);
+    PEnable <= 1'b0;
+endtask
+
+📌 Key Point:
+Instead of driving APB pins repeatedly, simply call:
+
+write(16'h50, 32'hABCD);
+
+👉 Task = Reusable APB write operation.
+
+-----------------------------------------------------------------------------------------------------------------
+
+🧪 Sample 1.3 — Low-Level Verilog Test
+
+This example shows a simple Verilog test using the tasks from Sample 1.2.
+
+🔹 Test Flow
+Reset → Write Data → Check Result → Finish
+🔄 reset() → Resets the DUT.
+✍️ write(16'h50, 32'h50) → Writes data into memory.
+🔍 Checks whether memory location 16'h50 contains 32'h50.
+✅ Match → Success
+❌ Mismatch → Error
+🛑 $finish → Ends simulation.
+
+📌 Key Point:
+Sample 1.3 is called a low-level Verilog test because the test still directly depends on Verilog tasks and DUT-level details.
+
+👉 Sample 1.1: Directly drives APB pins
+👉 Sample 1.2: Encapsulates pin driving into a task
+👉 Sample 1.3: Uses the task to create a complete test case
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
 
 
 
