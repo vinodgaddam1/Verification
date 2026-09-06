@@ -389,12 +389,130 @@ For example, in a music player:
 <img width="777" height="350" alt="Screenshot 2026-09-06 221430" src="https://github.com/user-attachments/assets/841d3c96-1c79-4c27-8144-20ba74f9c087" />
 
 
+🔬 Fig. 1.12 — Full Testbench with All Layers
+
+This figure shows a complete layered testbench, including the Scenario, Functional, Command, and Signal layers.
+
+📌 Main Components
+🧪 Test → Starts and controls the verification scenario.
+🎯 Generator → Generates scenarios/transactions.
+⚙️ Agent → Connects the generator to the lower-level components.
+🚗 Driver → Converts transactions into DUT signals.
+🔍 Assertions → Check signal-level and protocol behavior.
+👀 Monitor → Observes DUT signals and collects responses.
+📊 Scoreboard → Compares expected and actual results.
+✅ Checker → Determines whether the DUT behavior is correct.
+📈 Functional Coverage → Measures which required functionality has been exercised.
+<img width="835" height="400" alt="Screenshot 2026-09-06 221554" src="https://github.com/user-attachments/assets/a5169279-cce0-4f7a-9e0e-6cd9568cecb7" />
 
 
+🧪 Exercise 1 — ALU Verification Plan
+📌 DUT Specifications
+🔄 Reset: Asynchronous, active HIGH
+⏱️ Clock: Input clock
+📥 A: 4-bit signed input
+📥 B: 4-bit signed input
+📤 C: 5-bit signed registered output
+⚙️ C updates: Positive edge of clock
+🔢 Opcodes: 4 operations
+
+solution:
+module alu (
+    input  logic clk,
+    input  logic reset,
+    input  logic signed [3:0] A,
+    input  logic signed [3:0] B,
+    input  logic [1:0] opcode,
+    output logic signed [4:0] C
+);
+
+    always_ff @(posedge clk or posedge reset) begin
+        if (reset)
+            C <= 5'sd0;
+        else begin
+            case (opcode)
+                2'b00: C <= A + B;
+                2'b01: C <= A - B;
+                2'b10: C <= ~A;
+                2'b11: C <= |B;
+            endcase
+        end
+    end
+
+endmodule
 
 
+module alu_tb;
+
+    logic clk;
+    logic reset;
+    logic signed [3:0] A, B;
+    logic [1:0] opcode;
+    logic signed [4:0] C;
+
+    // Opcode definitions
+    localparam ADD    = 2'b00;
+    localparam SUB    = 2'b01;
+    localparam INV    = 2'b10;
+    localparam RED_OR = 2'b11;
+
+    // DUT
+    alu dut (
+        .clk    (clk),
+        .reset  (reset),
+        .A      (A),
+        .B      (B),
+        .opcode (opcode),
+        .C      (C)
+    );
+
+    // Clock generation
+    always #5 clk = ~clk;
+
+    initial begin
+        clk   = 0;
+        reset = 0;
+        A     = 0;
+        B     = 0;
+        opcode = ADD;
+
+        // Asynchronous active-high reset
+        #2 reset = 1;
+        #2 reset = 0;
+
+        // ADD
+        A = 4'sd5;
+        B = 4'sd3;
+        opcode = ADD;
+        @(posedge clk);
+        #1 $display("ADD: A=%0d B=%0d C=%0d", A, B, C);
+
+        // SUB
+        A = 4'sd7;
+        B = 4'sd3;
+        opcode = SUB;
+        @(posedge clk);
+        #1 $display("SUB: A=%0d B=%0d C=%0d", A, B, C);
+
+        // INVERT A
+        A = 4'b1010;
+        opcode = INV;
+        @(posedge clk);
+        #1 $display("INV: A=%b C=%b", A, C);
+
+        // REDUCTION OR B
+        B = 4'b0001;
+        opcode = RED_OR;
+        @(posedge clk);
+        #1 $display("RED_OR: B=%b C=%b", B, C);
+
+        $finish;
+    end
+
+endmodule
 
 
+Chapter 2 — SystemVerilog Data Types
 
 
 
