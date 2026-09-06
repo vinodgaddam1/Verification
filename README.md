@@ -1,6 +1,3 @@
-<img width="756" height="520" alt="Screenshot 2026-09-06 215930" src="https://github.com/user-attachments/assets/68ebbfc8-caa2-40b2-97d7-e0df2371efba" />
-<img width="601" height="393" alt="Screenshot 2026-09-06 215702" src="https://github.com/user-attachments/assets/a8cc7e98-f5f0-4352-bf4d-2166a02c2b60" />
-<img width="920" height="1280" alt="WhatsApp Image 2026-08-06 at 6 47 33 PM" src="https://github.com/user-attachments/assets/68856e3b-3e2f-4514-8088-2e1a5dd6f034" />
 # 🔬 Chapter 1 — Verification Guidelines
 
 ## 📌 1.1.2 The Verification Plan
@@ -351,6 +348,47 @@ Sample 1.3 is called a low-level Verilog test because the test still directly de
 👉 Sample 1.1: Directly drives APB pins
 👉 Sample 1.2: Encapsulates pin driving into a task
 👉 Sample 1.3: Uses the task to create a complete test case
+
+
+🔌 The Signal and Command Layers
+
+📌 1. Signal Layer
+
+📌 2. Command Layer
+
+🚗 Driver → Converts commands into DUT input signals.
+👀 Monitor → Observes DUT output signals and groups them into commands.
+🎯 Assertions → Check individual signals and behavior across complete commands.
+
+<img width="757" height="217" alt="Screenshot 2026-09-06 221110" src="https://github.com/user-attachments/assets/c3f03809-c96a-4492-9f66-993ab00d8053" />
+
+🔬 Figure 1.10 — Testbench with Functional Layer
+The Functional Layer is added above the Command and Signal layers to work with high-level functionality.
+
+📌 Functional Layer Components
+⚙️ Agent → Connects the functional layer with the command layer.
+📊 Scoreboard → Compares expected results with actual results.
+🔍 Checker → Determines whether the DUT behavior is correct.
+
+<img width="805" height="305" alt="Screenshot 2026-09-06 221328" src="https://github.com/user-attachments/assets/8e8aa154-e574-4065-aebf-19d7b017db1a" />
+
+
+🎯 The Scenario Layer
+The Scenario Layer is the highest layer of the testbench. It is driven by the Generator and defines complete, realistic operations that the DUT should perform.
+
+📌 What is a Scenario?
+
+A scenario is a sequence of operations that represents a particular use case or task.
+
+For example, in a music player:
+
+🎵 Play music from storage
+📥 Download a new song
+🔊 Adjust volume
+⏩ Change tracks
+<img width="777" height="350" alt="Screenshot 2026-09-06 221430" src="https://github.com/user-attachments/assets/841d3c96-1c79-4c27-8144-20ba74f9c087" />
+
+
 
 
 
