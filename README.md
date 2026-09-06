@@ -122,12 +122,17 @@ For a FIFO, the testbench may:
 
 > **Generate → Apply → Capture → Check → Measure**
 
-🔬 Chapter 1 — Verification Guidelines
+-----------------------------------------------------------------------------------------------------------------
+
 📌 1.4 Directed Testing
 
 Directed testing is a verification approach where you study the hardware specification and create a verification plan containing a list of specific tests.
 
 Each test focuses on a particular set of related features of the DUT.
+<img width="797" height="327" alt="Screenshot 2026-09-06 222210" src="https://github.com/user-attachments/assets/eeba16a3-bad4-4890-8e12-85e7039de0eb" />
+
+
+
 
 🎯 Basic Approach
 
@@ -169,6 +174,17 @@ The important idea is that random testing can reach different coverage points qu
 
 📌 Key Point:
 Directed testing is predictable and targeted, but writing enough directed tests for a complex design can become time-consuming.
+
+
+1.4.1 Constrained-Random Stimulus:
+Although you want the simulator to generate the stimulus, you don’t want totally random values. You use the SystemVerilog language to describe the format of the stimulus (“address is 32-bits; opcode is ADD, SUB or STORE; length < 32 bytes”), and the simulator picks values that meet the constraints.
+
+
+
+
+
+
+ 
 
 -----------------------------------------------------------------------------------------------------------------
  
