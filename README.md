@@ -169,6 +169,8 @@ The important idea is that random testing can reach different coverage points qu
 
 📌 Key Point:
 Directed testing is predictable and targeted, but writing enough directed tests for a complex design can become time-consuming.
+
+-----------------------------------------------------------------------------------------------------------------
  
 📌 1.5 Methodology Basics
 
@@ -185,6 +187,8 @@ Directed testing is predictable and targeted, but writing enough directed tests 
 📌 Key Takeaway:
 
 A good verification methodology is not just about finding bugs. It is about creating a reusable and measurable process for demonstrating that the DUT meets its specification.
+
+-----------------------------------------------------------------------------------------------------------------
 
 📌 1.6 What Should You Randomize?
 
@@ -208,9 +212,41 @@ The useful strategy is:
 
 🎲 Randomize → 🔒 Constrain → 🧪 Stimulate → 🔍 Check → 📊 Measure Coverage
 
+-----------------------------------------------------------------------------------------------------------------
+
+🔬 1.7 The Testbench — Design Environment
+
+The testbench wraps around the Design Under Test (DUT), similar to how a hardware tester connects to a physical chip.
+           🧪 TESTBENCH
+        ┌─────────────────────┐
+        │                     │
+Input ──┤  Stimulus           │
+        │       ↓             │
+        │      DUT            │
+        │       ↓             │
+ Output ┤  Response Capture   │
+        │                     │
+        └─────────────────────┘
 
 
+-----------------------------------------------------------------------------------------------------------------
 
+📌 1.8 Testbench Components — Bus Functional Models (BFMs)
+
+   A testbench can contain multiple Bus Functional Models (BFMs).
+   For example,
+     🔵 AMBA
+     🟢 USB
+     🟠 PCI
+     🟣 SPI
+
+📌 Key Takeaway
+
+Testbench = More than just stimulus
+
+A well-structured testbench can contain:
+
+🎯 Tests → 📦 Transactions → 🔄 Transactors/BFMs → 🔌 DUT Interface → 🔍 Monitors → 📊 Checkers
 
 
 
