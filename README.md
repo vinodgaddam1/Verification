@@ -594,16 +594,42 @@ real r;          // floating-point
 | `time`         | 4-state |                64 bit | ❌ Unsigned |
 | `real`         | 2-state | 64-bit floating point | —          |
 
+🧠 Easy Memory Trick
+2-state: 0, 1 ⚡
+4-state: 0, 1, X, Z 🔬
+Signed: Can represent ➕ positive and ➖ negative numbers.
 
+<img width="762" height="193" alt="Screenshot 2026-09-07 220434" src="https://github.com/user-attachments/assets/bddd2335-58ca-45e1-aa89-9797bd2cdec6" />
+<img width="755" height="210" alt="Screenshot 2026-09-07 220427" src="https://github.com/user-attachments/assets/aac9e4c7-5c8e-461f-aa47-3820c6ad7b16" />
 
+📘 2.2 Fixed-Size Arrays
+Fixed-size array = Array whose size is known at compile time and cannot change during simulation. 📦
 
+<img width="547" height="122" alt="Screenshot 2026-09-07 220720" src="https://github.com/user-attachments/assets/7d381a81-1b6d-410c-b125-fc28a83a11c2" />
 
+SystemVerilog has the  $clog2()  function that calculates the ceiling of log base 2, 
 
+<img width="756" height="165" alt="Screenshot 2026-09-07 220831" src="https://github.com/user-attachments/assets/b009416b-eb9f-4618-946d-f1bab41e5f3c" />
+<img width="730" height="142" alt="Screenshot 2026-09-07 220906" src="https://github.com/user-attachments/assets/56a3e152-3e92-4d62-9827-09a8f91b11af" />
+<img width="782" height="267" alt="Screenshot 2026-09-07 221000" src="https://github.com/user-attachments/assets/166e125a-4a02-47c1-9e1a-d89e2d599ff2" />
 
+📘 2.2.2 — Array Literal
 
+An array literal is a way to initialize an array with values directly using '{' and '}'. 🧩
+<img width="807" height="276" alt="Screenshot 2026-09-07 221121" src="https://github.com/user-attachments/assets/a45a9512-ea02-40c3-8b9a-7d6f1d323f8a" />
 
- 
- 
+<img width="743" height="225" alt="Screenshot 2026-09-07 221137" src="https://github.com/user-attachments/assets/2541223f-c491-41ec-a7a5-d856224c0fac" />
+
+📘 2.2.3 — Basic Array Operations: for & foreach
+Both for and foreach are used to access array elements. 🔢
+
+ <img width="823" height="335" alt="Screenshot 2026-09-07 221239" src="https://github.com/user-attachments/assets/b55d63e4-ff62-4ee4-be3d-b265bafe5d7f" />
+
+ <img width="832" height="348" alt="Screenshot 2026-09-07 221259" src="https://github.com/user-attachments/assets/28c2c09a-75d1-4263-b73f-37b0bcd33ff5" />
+
+ <img width="788" height="397" alt="Screenshot 2026-09-07 221324" src="https://github.com/user-attachments/assets/fe80d73e-451d-47f1-b5ae-89fc9f2419c2" />
+<img width="837" height="726" alt="Screenshot 2026-09-07 221413" src="https://github.com/user-attachments/assets/2878ac1a-41d5-46d4-9d34-5f45e1aa15e9" />
+
 
 
 
