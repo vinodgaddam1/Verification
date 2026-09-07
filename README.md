@@ -628,7 +628,111 @@ Both for and foreach are used to access array elements. 🔢
  <img width="832" height="348" alt="Screenshot 2026-09-07 221259" src="https://github.com/user-attachments/assets/28c2c09a-75d1-4263-b73f-37b0bcd33ff5" />
 
  <img width="788" height="397" alt="Screenshot 2026-09-07 221324" src="https://github.com/user-attachments/assets/fe80d73e-451d-47f1-b5ae-89fc9f2419c2" />
+ 
 <img width="837" height="726" alt="Screenshot 2026-09-07 221413" src="https://github.com/user-attachments/assets/2878ac1a-41d5-46d4-9d34-5f45e1aa15e9" />
+
+📘 Basic Array Operations — Copy & Compare
+
+<img width="811" height="618" alt="Screenshot 2026-09-07 222207" src="https://github.com/user-attachments/assets/783d992e-d76b-422c-8414-3835026f5627" />
+
+
+📘 Bit and Array Subscripts — Together at Last
+
+SystemVerilog allows you to combine bit/part-selects with array indexes. 🔢
+
+<img width="740" height="205" alt="Screenshot 2026-09-07 222702" src="https://github.com/user-attachments/assets/b46a9e35-f353-4b9e-9c9c-f6f6c64df080" />
+
+Verilog-2001 Improvement — Double Comma in $display
+
+This is a small but useful improvement in Verilog-2001. 🛠️
+
+🔹 Double Comma ,,
+
+In a $display statement, using two commas inserts a space in the output.
+
+Example 1️⃣
+$display("Hello",,"World");
+
+Output:
+
+Hello World
+Example 2️⃣
+int a = 10;
+int b = 20;
+
+$display("a =",a,,"b =",b);
+
+📘 2.2.6 — Packed Arrays
+
+A packed array is a collection of bits stored continuously next to each other in memory. 🔢
+
+<img width="842" height="565" alt="Screenshot 2026-09-07 222922" src="https://github.com/user-attachments/assets/12497485-95ec-48a6-962a-627dac5fa80c" />
+
+
+<img width="823" height="452" alt="Screenshot 2026-09-07 223026" src="https://github.com/user-attachments/assets/857d5509-c192-4b20-9fbf-9684e94ef717" />
+
+
+ With a single subscript, you get a word of data,  barray[0] .With two subscripts, you get a byte of data,  barray[0][3] . With three subscripts, you can access a single bit,  barray[0][1][6] . Because one dimension is specifi ed after the name, barray[5] , that dimension is unpacked, so you must always give at least one subscript. 
+
+📘 2.2.8 — Choosing Between Packed and Unpacked Arrays
+
+The choice depends on what you want the array to represent. 🔢
+
+🔹 Waiting for Array Changes
+
+The @ operator can be used with scalar values and packed arrays.
+
+For example:
+
+logic [7:0] barray[4];
+
+@(barray[0]);  // ✅ Legal
+
+But:
+
+@(barray);     // ❌ Not legal
+
+because barray is an unpacked array.
+
+To wait for any element of the unpacked array to change:
+
+@(barray[0] or barray[1] or
+  barray[2] or barray[3]);
+🧠 Remember
+🔢 Packed array → useful for scalar conversion and @ event control.
+📦 Unpacked array → useful for storing separate elements/memory.
+⏳ @ works with scalars and packed arrays, not an entire unpacked array.
+
+
+📘 2.3 — Dynamic Arrays
+
+ A dynamic array is an array whose size can be decided and changed at runtime. 🔄
+
+ A dynamic array is declared with empty word subscripts  [] . This means that you do not specify the array size at compile time; instead, give it at run time. The array is initially empty, so you must call the  new[]  constructor to allocate space, passing in the number of entries in the square brackets. If you pass an array name to the  new[]  constructor, 
+
+ <img width="820" height="368" alt="Screenshot 2026-09-07 225153" src="https://github.com/user-attachments/assets/79f4f71d-8c9c-485f-b353-3a21a6749a1f" />
+
+
+<img width="757" height="356" alt="Screenshot 2026-09-07 225444" src="https://github.com/user-attachments/assets/471c39d5-c0cd-415d-832a-e5da7b61126f" />
+
+<img width="797" height="447" alt="Screenshot 2026-09-07 225547" src="https://github.com/user-attachments/assets/4890db2c-2edb-4416-a98d-8621581cfa49" />
+
+
+📘 2.4 — Queues
+
+A queue is a variable-size array that stores elements in a specific order. 📦A queue is declared with word subscripts containing a dollar sign:  [$] . The elements of a queue are numbered from 0 to $
+
+
+if you put a $ on the left side of a range, such as  [$:2] , the  $  stands for the minimum value,  [0:2] . A  $  on the right side, as in  [1:$] , stands for the maximum value,  [1:2] 
+
+<img width="802" height="485" alt="Screenshot 2026-09-07 231132" src="https://github.com/user-attachments/assets/19661791-c6be-47d1-917c-82a34f87111d" />
+
+<img width="857" height="617" alt="Screenshot 2026-09-07 231238" src="https://github.com/user-attachments/assets/ff78d2de-4452-4caa-a2f2-518946e06190" />
+
+
+
+
+
 
 
 
