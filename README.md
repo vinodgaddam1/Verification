@@ -524,9 +524,75 @@ module alu_tb;
 endmodule
 
 -----------------------------------------------------------------------------------------------------------------
-# 🔬 Chapter 2 — Data Types
+📘 Chapter 2 — SystemVerilog Data Types
 
+SystemVerilog provides improved data types and data structures for better performance, less memory, and easier verification.
 
+🔹 Key Features
+⚡ Two-State Types → bit, int → better performance & less memory
+📦 Queues → Variable-size storage with built-in push/pop
+📊 Dynamic Arrays → Size decided at runtime
+🔑 Associative Arrays → Key-based storage & searching
+🏗️ Classes & Structures → Organize complex data
+🔄 Unions & Packed Structures → Multiple views of same data
+📝 Strings → Built-in text handling
+🔢 Enumerated Types → Readable and meaningful values
+🎯 Main Benefit
+
+SystemVerilog = Flexible + Efficient + Verification-friendly data structures 🚀
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 2.1 — Built-In Data Types
+
+SystemVerilog provides several built-in data types for storing different kinds of data.
+
+🔹 Main Categories
+🔢 Integer Types → bit, logic, reg, int, integer
+🔤 String Type → string
+🔢 Enumerated Type → enum
+📦 Structure Type → struct
+🔄 Union Type → union
+⭐ Important Classification
+
+2-State:
+bit, byte, shortint, int, longint
+
+➡️ Stores only 0 and 1 ⚡
+
+4-State:
+logic, reg, integer, time
+
+➡️ Stores 0, 1, X, Z 🔬
+
+🎯 Remember
+
+2-state → 0, 1
+4-state → 0, 1, X, Z
+
+int i;           // 32-bit, 2-state, signed
+int unsigned ui; // 32-bit, 2-state, unsigned
+
+byte b8;         // 8-bit signed
+shortint s;      // 16-bit signed
+longint l;       // 64-bit signed
+
+integer i4;      // 32-bit, 4-state signed
+time t;          // 64-bit, 4-state unsigned
+real r;          // floating-point
+
+| Type           | States  |                  Size | Signed?    |
+| -------------- | ------- | --------------------: | ---------- |
+| `bit`          | 2-state |                 1 bit | ❌ Unsigned |
+| `bit [31:0]`   | 2-state |                32 bit | ❌ Unsigned |
+| `int unsigned` | 2-state |                32 bit | ❌ Unsigned |
+| `int`          | 2-state |                32 bit | ✅ Signed   |
+| `byte`         | 2-state |                 8 bit | ✅ Signed   |
+| `shortint`     | 2-state |                16 bit | ✅ Signed   |
+| `longint`      | 2-state |                64 bit | ✅ Signed   |
+| `integer`      | 4-state |                32 bit | ✅ Signed   |
+| `time`         | 4-state |                64 bit | ❌ Unsigned |
+| `real`         | 2-state | 64-bit floating point | —          |
 
 
 
