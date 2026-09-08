@@ -729,6 +729,64 @@ if you put a $ on the left side of a range, such as  [$:2] , the  $  stands for 
 
 <img width="857" height="617" alt="Screenshot 2026-09-07 231238" src="https://github.com/user-attachments/assets/ff78d2de-4452-4caa-a2f2-518946e06190" />
 
+📘 Chapter 2.5 — Associative Arrays in SystemVerilog 🔬
+🧠 1. What is an Associative Array?
+
+An Associative Array is an unpacked array where elements are accessed using a key/index instead of a fixed size. 🔑
+
+It is useful when:
+
+📌 You don't know the number of elements in advance.
+🔑 You want to access data using meaningful keys.
+💾 You want to avoid allocating unused memory.
+✍️ Syntax
+data_type array_name [index_type];
+
+<img width="797" height="181" alt="Screenshot 2026-09-08 220016" src="https://github.com/user-attachments/assets/da33f280-2e55-4d84-9b99-3442077d9e6b" />
+
+<img width="801" height="357" alt="Screenshot 2026-09-08 222130" src="https://github.com/user-attachments/assets/3cf2ea5a-1e0a-4b43-9153-e2687f617c1d" />
+
+<img width="786" height="762" alt="Screenshot 2026-09-08 222120" src="https://github.com/user-attachments/assets/a9235c64-05eb-4e6c-b2ae-ed6b0b048b45" />
+
+<img width="802" height="626" alt="Screenshot 2026-09-08 222107" src="https://github.com/user-attachments/assets/e476746c-10f0-4b11-9c8c-6a5dc26c160d" />
+
+📘 Chapter 2.6 — Array Methods in SystemVerilog 🔬
+SystemVerilog provides built-in array methods to search, sort, locate, count, and manipulate array elements. 🛠️
+
+🧩 1. Types of Array Methods
+
+Array methods can be broadly divided into:
+
+Category	Methods
+🔍 Searching	find(), find_index(), find_first(), find_last()
+🔢 Counting	sum(), count()
+📊 Sorting	sort(), rsort()
+🔀 Ordering	reverse(), shuffle()
+🧮 Reduction	sum(), product(), and(), or(), xor()
+📦 Size/Manipulation	size(), delete()
+
+<img width="795" height="637" alt="Screenshot 2026-09-08 222408" src="https://github.com/user-attachments/assets/2b274532-1bdb-4186-8e41-82baacdc3648" />
+
+<img width="752" height="390" alt="Screenshot 2026-09-08 222948" src="https://github.com/user-attachments/assets/a9a4a978-7ad2-42a7-afa9-e57271e82162" />
+
+<img width="791" height="593" alt="Screenshot 2026-09-08 223042" src="https://github.com/user-attachments/assets/f0aeddb2-3a6c-436c-b23f-6cab8c1a9726" />
+
+<img width="802" height="531" alt="Screenshot 2026-09-08 223154" src="https://github.com/user-attachments/assets/d4c6a8c3-6a2c-4c30-bcf0-4fd7532a9c4a" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
