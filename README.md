@@ -773,9 +773,29 @@ Category	Methods
 
 <img width="802" height="531" alt="Screenshot 2026-09-08 223154" src="https://github.com/user-attachments/assets/d4c6a8c3-6a2c-4c30-bcf0-4fd7532a9c4a" />
 
+<img width="798" height="441" alt="Screenshot 2026-09-08 224800" src="https://github.com/user-attachments/assets/a7027785-cf3d-4eb1-ae45-1d0843f752cb" />
 
+<img width="721" height="172" alt="Screenshot 2026-09-08 224752" src="https://github.com/user-attachments/assets/a2e327dd-5eae-435a-9919-f46e598befa2" />
 
+<img width="796" height="692" alt="Screenshot 2026-09-08 225554" src="https://github.com/user-attachments/assets/d09718fb-d76b-49fa-9566-b33747c1c5d6" />
 
+<img width="827" height="423" alt="Screenshot 2026-09-08 225544" src="https://github.com/user-attachments/assets/e9709ef9-92e5-4071-9936-fb22686f14d5" />
+
+📘 2.6.3 — Array Sorting and Ordering 🔢
+
+SystemVerilog provides built-in methods to sort, reverse, and randomly rearrange array elements. These methods are very useful in verification for organizing transactions and test data. 🧪
+
+The main methods are:
+
+Method	Purpose
+sort()	⬆️ Ascending order
+rsort()	⬇️ Descending order
+reverse()	🔄 Reverse existing order
+shuffle()	🎲 Randomly rearrange
+
+<img width="788" height="345" alt="Screenshot 2026-09-08 230123" src="https://github.com/user-attachments/assets/d541863f-fc24-4b88-9702-44586b80682f" />
+
+<img width="800" height="247" alt="Screenshot 2026-09-08 230114" src="https://github.com/user-attachments/assets/3aa695aa-3792-40f0-99bd-7b12f0d344f8" />
 
 
 
