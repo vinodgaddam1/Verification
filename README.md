@@ -802,6 +802,8 @@ shuffle()	🎲 Randomly rearrange
 <img width="1167" height="767" alt="Screenshot 2026-09-30 183811" src="https://github.com/user-attachments/assets/5582fafc-8d3b-45e1-94cd-4d5b77da078a" />
 
 Answers:
+
+
 a. Byte in systemVerilog is 8-bit signed by default
 -128 to +127
 
