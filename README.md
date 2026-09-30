@@ -798,8 +798,28 @@ shuffle()	🎲 Randomly rearrange
 <img width="800" height="247" alt="Screenshot 2026-09-08 230114" src="https://github.com/user-attachments/assets/3aa695aa-3792-40f0-99bd-7b12f0d344f8" />
 
 
+#SYSTEMVERILOG ASSIGNMENT
+<img width="1167" height="767" alt="Screenshot 2026-09-30 183811" src="https://github.com/user-attachments/assets/5582fafc-8d3b-45e1-94cd-4d5b77da078a" />
 
+Answers:
+a. Byte in systemVerilog is 8-bit signed by default
+-128 to +127
 
+b. my_integer = 32’b0000_1111_xxxx_zzzz;
+my_int = my_integer;
+binary = 0000_0000_0000_0000_0000_1111_0000_0000
+hex = 00000f00
+
+c. my_bit =16’h8000;
+16'h8000 = 1000 0000 0000 0000  2^15 = 32768
+
+d.my_short_int1 = my_bit;
+binary = 0000_1000_0000_0000  =  decimal 2048
+
+c. my_short_int2 = my_short_int1 - 1;
+binary in 2’complement form = 0111_1111_1111_1111
+ decimal = 32767
+                        
 
 
 
