@@ -821,7 +821,67 @@ binary = 0000_1000_0000_0000  =  decimal 2048
 c. my_short_int2 = my_short_int1 - 1;
 binary in 2’complement form = 0111_1111_1111_1111
  decimal = 32767
-                        
+
+ <img width="1087" height="791" alt="Screenshot 2026-10-01 184043" src="https://github.com/user-attachments/assets/a58cbe2e-a597-4851-a40f-d38da728731e" />
+module top;
+
+  bit [7:0] my_mem[3];
+  
+  logic [3:0] my_logicmem[4];
+  
+  logic [3:0] my_logic;
+
+  initial begin
+    
+  my_mem  = '{default : 8'hA5};
+  
+  my_logicmem =  '{0,1,2,3};
+  
+  my_logic = 4'hf;
+  
+  my_mem[2]  =  my_logicmem[4];
+    
+    
+    // a. mem_mem[2] = my_logicmem[4]
+    $display("%p",my_mem); //decimal
+    $display("%0h", my_mem[0]);
+    $display("%0h", my_mem[1]);
+    $display("%0h", my_mem[2]);
+    
+    
+    
+    //b. my_logic  = my_logicmem[4]
+    my_logic  = my_logicmem[4];
+    $display("%p",my_logic);
+    
+    
+    
+    //c. my_logicmem[3]  = my_mem[3]
+    my_logicmem[3]  = my_mem[3];
+    $display("%p",my_logicmem);
+    
+    
+     //d. my_mem[3]  = my_logic
+     my_mem[3]  = my_logic;
+     $display("%p",my_mem);
+    
+    //e. my_logic  = my_logicmem[1];
+     my_logic  = my_logicmem[1];
+    $display("%p",my_logic);
+    
+    
+    //f. my_logic  = my_mem[1];
+    my_logic  = my_mem[1];
+    $display("%p",my_logic);
+    
+    
+    
+    //g. my_logic  = my_logicmem[my_logicmem[41]];
+    my_logic  = my_logicmem[my_logicmem[41]];
+    $display("%p",my_logic);
+    
+  end
+endmodule
 
 
 
