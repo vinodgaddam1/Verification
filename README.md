@@ -884,10 +884,40 @@ module top;
 endmodule
 
 
+<img width="1040" height="482" alt="Screenshot 2026-10-02 182635" src="https://github.com/user-attachments/assets/4f1cece4-bea6-4bc4-8766-fb58ca1208ac" />
+
+//Complete Code:
+
+module top;
+
+  // a. 2-state array holding four 12-bit values
+  bit [11:0] my_array [0:3];
+
+  initial begin
+
+    // b. Initialize the array
+    my_array[0] = 12'h012;
+    my_array[1] = 12'h345;
+    my_array[2] = 12'h678;
+    my_array[3] = 12'h9AB;
 
 
+    // c. Traverse using for loop
+    $display("Using FOR loop:");
+
+    for (int i = 0; i < 4; i++) begin
+      $display("my_array[%0d] = %03h, bits[5:4] = %02b",
+               i, my_array[i], my_array[i][5:4]);
+    end
 
 
+    // c. Traverse using foreach loop
+    foreach (my_array[i]) begin
+      $display("my_array[%0d] = %03h, bits[5:4] = %02b",
+               i, my_array[i], my_array[i][5:4]); //%03h this is means I want 3 – digits with hex 
+    end
+  end
+endmodule
 
 
 
