@@ -920,6 +920,59 @@ module top;
 endmodule
 
 
+<img width="1107" height="353" alt="Screenshot 2026-10-03 191434" src="https://github.com/user-attachments/assets/5867b059-8349-4941-9f51-64d4869ed040" />
+
+
+Code:
+
+module array_example;
+
+    // 5 x 31 multi-dimensional unpacked array
+    // Each element is a 4-state value
+    logic my_array1 [5][31];
+
+    initial begin
+
+        // =====================================================
+        // (a) Check the assignments
+        // =====================================================
+
+        // Legal assignment
+        my_array1[4][30] = 1'b1;
+
+        // Illegal: index 29 is outside first dimension (0 to 4)
+        // my_array1[29][4] = 1'b1;
+
+        // Illegal: my_array1[4] is an unpacked array of 31 elements,
+        // but 32'b1 is a 32-bit packed value.
+        // my_array1[4] = 32'b1;
+
+
+        // =====================================================
+        // (b) Draw / display my_array1
+        // =====================================================
+
+        $display("\nArray contents:");
+
+        for (int i = 0; i < 5; i++) begin
+
+            $write("Row %0d: ", i);
+
+            for (int j = 0; j < 31; j++) begin
+                $write("%b ", my_array1[i][j]);
+            end
+
+            $display();
+        end
+
+
+        // Display the position containing 1
+        $display("\nNon-zero element:");
+        $display("my_array1[4][30] = %b", my_array1[4][30]);
+
+    end
+
+endmodule
 
 
 
