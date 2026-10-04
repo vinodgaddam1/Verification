@@ -974,6 +974,35 @@ module array_example;
 
 endmodule
 
+<img width="1167" height="327" alt="Screenshot 2026-10-04 175157" src="https://github.com/user-attachments/assets/2f078813-e801-4b15-b979-52a14b23f40f" />
+Code:
+ 
+For Example:
+module packed_array_example;
+
+    // 5 × 31 packed 2-state array
+    bit [4:0][30:0] my_array2;
+
+    initial begin
+
+        // 1. Legal: [4] is within 0:4, [30] within 0:30
+        my_array2[4][30] = 1'b1;
+
+        // 2. Illegal: first dimension is only 0 to 4
+        // my_array2[29][4] = 1'b1;
+
+        // 3. Legal: my_array2[3] selects the entire 31-bit slice
+        // 32'b1 is truncated to 31 bits
+        my_array2[3] = 32'b1;
+
+        // Display
+        $display("my_array2[4][30] = %b", my_array2[4][30]);
+        $display("my_array2[3]    = %b", my_array2[3]);
+
+    end
+
+endmodule
+
 
 
 
