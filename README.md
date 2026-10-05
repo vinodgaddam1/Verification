@@ -1004,6 +1004,17 @@ module packed_array_example;
 endmodule
 
 
+<img width="855" height="510" alt="Screenshot 2026-10-05 191017" src="https://github.com/user-attachments/assets/80e2a354-0326-4930-acda-14723ccf5e92" />
+
+ 
+
+Answer:
+Street[0] = Tejon
+Street[2] = Platte
+Street[2] = Bijou
+pop_back = Boulder
+street.size = 4
+
 
 
 
