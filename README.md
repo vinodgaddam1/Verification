@@ -1015,6 +1015,64 @@ Street[2] = Bijou
 pop_back = Boulder
 street.size = 4
 
+<img width="905" height="383" alt="Screenshot 2026-10-06 185651" src="https://github.com/user-attachments/assets/4d8fe768-f598-4757-8d72-91b1c5912191" />
+Key points
+Word width: 24 bits → logic [23:0]
+Address width: \(2^{20}\) words → 20-bit address → logic [19:0]
+Reset PC: 0
+Program starts: 20'h00400
+Maximum address: \(2^{20}-1 = 20'hFFFFF\)
+ISR: 20'hFFFFF
+Only 4 memory locations are actually occupied, so an associative array is appropriate.
+
+ Answers:
+module associative_memory;
+
+  // 24-bit word
+  // 20-bit address
+  logic [23:0] memory [logic [19:0]];
+
+  // Addresses
+  localparam logic [19:0] RESET_PC  = 20'h00000;
+  localparam logic [19:0] MAIN_CODE = 20'h00400;
+  localparam logic [19:0] ISR_ADDR  = 20'hFFFFF;
+
+  initial begin
+
+  
+    // Fill memory with instructions
+    // Reset address 0: Jump to main code at 0x400
+    memory[RESET_PC] = 24'hA50400;
+
+    // Main program
+    memory[20'h00400] = 24'h123456;
+    memory[20'h00401] = 24'h789ABC;
+
+    // ISR at maximum address
+    memory[ISR_ADDR] = 24'h0F1E2D;
+
+    // Print memory contents
+
+
+    $display("====================================");
+    $display("       ASSOCIATIVE ARRAY MEMORY");
+    $display("========================================");
+
+    foreach (memory[address]) begin
+      $display("Address = 20'h%05h : Data = 24'h%06h",
+                address, memory[address]);
+    end
+
+    // Number of elements
+    $display("----------------------------------------");
+    $display("Number of elements = %0d", memory.num());
+
+
+    $finish;
+  end
+
+endmodule
+
 
 
 
