@@ -1074,8 +1074,80 @@ module associative_memory;
 endmodule
 
 
+<img width="922" height="316" alt="Screenshot 2026-10-07 181744" src="https://github.com/user-attachments/assets/0868e5b1-c29a-477e-b6e0-7574906b7b8d" />
 
 
+module queue_example;
+
+    // 3-byte queue initialized with 2, -1, and 127
+    byte q[$] = '{2, -1, 127};
+
+    int i;
+    int sum;
+
+    initial begin
+
+        // Display original queue
+        $display("Original Queue : %p", q);
+
+        // ------------------------------------------------
+        // b. Print sum of queue in decimal radix
+        // ------------------------------------------------
+        sum = q.sum();
+
+        $display("Sum            : %0d", sum);
+
+        // ------------------------------------------------
+        // c. Print min and max values
+        // ------------------------------------------------
+        $display("Minimum        : %0d", q.min());
+        $display("Maximum        : %0d", q.max());
+
+        // ------------------------------------------------
+        // d. Sort all values in ascending order
+        // ------------------------------------------------
+        q.sort();
+
+        $display("Sorted Queue   : %p", q);
+
+        // ------------------------------------------------
+        // e. Print index of any negative values
+        // ------------------------------------------------
+        foreach (q[i]) begin
+            if (q[i] < 0)
+                $display("Negative value : %0d at index %0d", q[i], i);
+        end
+
+        // ------------------------------------------------
+        // f. Print positive values
+        // ------------------------------------------------
+        foreach (q[i]) begin
+            if (q[i] > 0)
+                $display("Positive value : %0d", q[i]);
+        end
+
+        // ------------------------------------------------
+        // g. Reverse sort all values
+        // ------------------------------------------------
+        q.rsort();
+
+        $display("Reverse Sorted : %p", q);
+
+    end
+
+endmodule
+
+
+Expected output
+Original Queue : '{2, -1, 127}
+Sum            : 128
+Minimum        : -1
+Maximum        : 127
+Sorted Queue   : '{-1, 2, 127}
+Negative value : -1 at index 0
+Positive value : 2
+Positive value : 127
+Reverse Sorted : '{127, 2, -1}
 
 
 
