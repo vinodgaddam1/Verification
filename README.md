@@ -1149,5 +1149,44 @@ Positive value : 2
 Positive value : 127
 Reverse Sorted : '{127, 2, -1}
 
+<img width="821" height="200" alt="Screenshot 2026-10-08 182612" src="https://github.com/user-attachments/assets/4bd87847-8c67-4991-ab45-0651f624c16f" />
+
+
+module packet_example;
+
+    // User-defined 7-bit type
+    typedef logic [6:0] field_t;
+
+    // 28-bit packed structure
+    typedef struct packed {
+        field_t header;   // [27:21]
+        field_t cmd;      // [20:14]
+        field_t data;     // [13:7]
+        field_t crc;      // [6:0]
+    } packet_t;
+
+    // Declare packet using the new type
+    packet_t packet;
+
+    initial begin
+
+        // Assign header
+        packet.header = 7'h5A;
+
+        // Example values for other fields
+        packet.cmd  = 7'h12;
+        packet.data = 7'h35;
+        packet.crc  = 7'h7F;
+
+        $display("Header = %h", packet.header);
+        $display("CMD    = %h", packet.cmd);
+        $display("Data   = %h", packet.data);
+        $display("CRC    = %h", packet.crc);
+        $display("Packet = %h", packet);
+
+    end
+
+endmodule
+
 
 
