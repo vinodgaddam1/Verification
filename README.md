@@ -1188,5 +1188,43 @@ module packet_example;
 
 endmodule
 
+<img width="790" height="350" alt="Screenshot 2026-10-09 180939" src="https://github.com/user-attachments/assets/46cde0dd-70e1-4614-8c26-45fa7fa2a784" />
+
+module sv_example;
+
+  // a. Create a user-defined type, nibble, of 4 bits
+  typedef logic [3:0] nibble;
+
+  // b. Create a real variable r and initialize it to 4.33
+  real r = 4.33;
+
+  // c. Create a shortint variable i_pack
+  shortint i_pack;
+
+  // d. Create an unpacked array k with 4 elements of type nibble
+  nibble k[4] = '{4'h0, 4'hF, 4'hE, 4'hD};
+
+  initial begin
+
+    // e. Print k
+    $display("Initial k = %p", k);
+
+    // f. Stream k into i_pack right to left on a bit basis
+    i_pack = {>>{k}};
+    $display("Bit streaming: i_pack = %h", i_pack);
+
+    // g. Stream k into i_pack right to left on a nibble basis
+    i_pack = {>>4{k}};
+    $display("Nibble streaming: i_pack = %h", i_pack);
+
+    // h. Type convert real r into a nibble, assign it to k[0], and print k
+    k[0] = nibble'(r);
+    $display("After conversion: k = %p", k);
+
+  end
+
+endmodule
+
+
 
 
